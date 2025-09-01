@@ -1,7 +1,13 @@
 <h1 class="text-2xl mb-5 font-bold text-center text-gray-800">Add a New Product</h1>
 
-<form method="POST" action="?/createProduct" use:enhance 
+<form method="POST" action="?/createProduct" enctype="multipart/form-data" use:enhance 
       class="bg-white rounded-lg p-5 shadow-md max-w-md w-full mx-auto">
+
+    <div class="mb-4">
+		<label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+		<input type="file" name="uploadedImage"  class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+	</div>
+
 	<div class="mb-4">
 		<label for="name" class="block text-sm mb-2 text-gray-600">Name</label>
 		<input type="text" placeholder="Enter name" name="name" id="name" required 

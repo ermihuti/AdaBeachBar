@@ -13,6 +13,7 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
 		{#each data.products as product (product.id)}
 			<div class="bg-white rounded-lg p-4 shadow-lg transition-transform transform hover:-translate-y-1">
+                <img src="{product.image}" alt="uploaded" class="w-64 h-64 object-contain rounded-lg border border-gray-300">
 				<p class="text-gray-700 text-base">
 					<strong class="text-gray-900">Name:</strong> {product.name} |
 					<strong class="text-gray-900">Description:</strong> {product.description} |
