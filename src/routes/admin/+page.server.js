@@ -1,9 +1,10 @@
 import { createConnection } from '$lib/db/mysql';
 import { redirect } from '@sveltejs/kit';
 
-export async function load({ locals }) {
+export async function load({ params }) {
 
 	let connection = await createConnection();
+    const { id } = params;
 	let [rows] = await connection.execute('SELECT * FROM products');
 
 	return {

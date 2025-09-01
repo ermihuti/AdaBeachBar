@@ -44,7 +44,11 @@
 				<form action="?/deleteProduct" method="POST" use:enhance 
 				      class="flex justify-end mt-3">
 					<input type="hidden" name="id" value={product.id} />
-					<button type="submit" 
+					<button type="button" 
+					        class="bg-gray-500 text-white mx-3 text-sm px-4 py-1.5 rounded-lg hover:bg-gray-600 transition">
+						<a href="admin/edit/{product.id}">Edit</a>
+					</button>
+                    <button type="submit" 
 					        class="bg-red-500 text-white text-sm px-4 py-1.5 rounded-lg hover:bg-red-600 transition">
 						Delete
 					</button>
