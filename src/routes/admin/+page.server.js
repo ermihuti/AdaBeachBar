@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 
 export async function load({ locals, params }) {
 	if (!locals.user || locals.user.role !== 'admin') {
-		redirect(302, '/login'); // Redirect if not admin
+		redirect(302, '/login');
 	}
 
 	let connection = await createConnection();
