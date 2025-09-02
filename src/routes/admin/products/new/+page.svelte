@@ -1,3 +1,11 @@
+<script>
+	import { enhance } from '$app/forms';
+	import { slide } from 'svelte/transition';
+	import Warning from '$lib/components/Warning.svelte';
+
+	let { data, form } = $props();
+</script>
+
 <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">
 	Add a New Product
 </h1>
@@ -31,6 +39,17 @@
 		<label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
 		<textarea name="description" id="description" placeholder="Enter product description" required
 		          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none h-24 resize-none"></textarea>
+	</div>
+
+	<!-- Category -->
+	<div class="mb-4">
+		<label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+		<select name="categoryId" id="category" 
+		        class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+			{#each data.categories as category (category.id)}
+				<option value={category.id}>{category.name}</option>
+			{/each}
+		</select>
 	</div>
 
 	<!-- Price -->

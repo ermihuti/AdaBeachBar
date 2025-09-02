@@ -15,10 +15,27 @@
 	   class="bg-gray-600 text-white text-lg px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition">
 		Back to Dashboard
 	</a>
-	<a href="/admin/new" 
+	<a href="/admin/products/new" 
 	   class="bg-blue-600 text-white text-lg px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
 		Add New Product
 	</a>
+	<a href="/admin/categories/new" 
+	   class="bg-blue-600 text-white text-lg px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+		Add New Category
+	</a>
+	<a href="/admin/categories" 
+	   class="bg-blue-600 text-white text-lg px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+		See Categories
+	</a>
+	
+	<form action="/logout?/logout" method="POST">
+		<button
+			type="submit"
+			class="rounded-md bg-red-500 px-5 py-2 text-lg font-semibold text-white transition hover:bg-red-700"
+		>
+			🚪 Logout
+		</button>
+	</form>
 </div>
 
 {#if form && !form.success}
@@ -38,6 +55,7 @@
 				<p class="text-sm text-gray-500">
 					<strong>ID:</strong> {product.id}
 				</p>
+				<p class="text-gray-900 font-bold">{product.categoryName}</p>
 				<h2 class="text-lg font-semibold text-gray-800">{product.name}</h2>
 				<p class="text-gray-600 text-sm">{product.description}</p>
 				<p class="text-gray-900 font-bold">{product.price} €</p>

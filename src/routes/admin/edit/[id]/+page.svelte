@@ -1,3 +1,11 @@
+<script>
+	import { enhance } from '$app/forms';
+	import { slide } from 'svelte/transition';
+	import Warning from '$lib/components/Warning.svelte';
+
+	let { data, form } = $props();
+</script>
+
 <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">
 	Edit Product
 </h1>
@@ -12,6 +20,15 @@
 <form method="POST" action="?/editProduct" enctype="multipart/form-data" use:enhance
       class="bg-white rounded-xl p-6 shadow-lg max-w-lg w-full mx-auto space-y-5">
 
+	<!-- Current Image -->
+	{#if data.product.image}
+		<img 
+			src={data.product.image} 
+			alt={data.product.name} 
+			class="w-full h-64 object-cover rounded-lg mb-4"
+		/>
+	{/if}
+
 	<!-- Image Upload -->
 	<div>
 		<label for="image" class="block text-sm font-medium text-gray-700 mb-2">Product Image</label>
@@ -22,21 +39,32 @@
 	<!-- Name -->
 	<div>
 		<label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-		<input type="text" name="name" id="name" placeholder="Enter product name" required
+		<input type="text" name="name" id="name" value={data.product.name}
 		       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
 	</div>
 
 	<!-- Description -->
 	<div>
 		<label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-		<textarea name="description" id="description" placeholder="Enter product description" required
+		<textarea name="description" id="description" value={data.product.description}
 		          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none h-24 resize-none"></textarea>
+	</div>
+
+	<!-- Category -->
+	<div class="mb-4">
+		<label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+		<select name="categoryId" id="category" 
+		        class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+			{#each data.categories as category (category.id)}
+				<option value={category.id} selected={category.id === data.product.category_id}>{category.name}</option>
+			{/each}
+		</select>
 	</div>
 
 	<!-- Price -->
 	<div>
 		<label for="price" class="block text-sm font-medium text-gray-700 mb-2">Price (€)</label>
-		<input type="number" name="price" id="price" placeholder="Enter price" required step="0.01" min="0"
+		<input type="number" name="price" id="price" value={data.product.price} step="0.01" min="0"
 		       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
 	</div>
 
