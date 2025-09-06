@@ -28,7 +28,7 @@
 		</svg>
 	</div>
 
-	<h1 class="text-5xl font-extrabold text-center text-sky-900 mb-12 tracking-wide font-serif">
+	<h1 class="text-5xl font-extrabold text-center text-sky-800 mb-12 tracking-wide font-serif">
 		ADA Beach Bar Menu
 	</h1>
 
